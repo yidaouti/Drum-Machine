@@ -1,0 +1,135 @@
+/* styles.css */
+
+/* Body styling with background image */
+body {
+  background-image: url('https://wallpapers.com/images/high/music-4k-doodle-fhosgwe4adxuunwq.webp'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Poppins', sans-serif;
+  color: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Adding a gradient overlay to the background for contrast */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+#drum-machine {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Drum pad container */
+#container-bank {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+/* Individual drum pad styling */
+.drum-pad {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  color: #00ffcc;
+  font-size: 24px;
+  text-align: center;
+  padding: 25px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.drum-pad::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, #00ffcc, #ff00cc, #ffcc00);
+  filter: blur(15px);
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.drum-pad:hover::before,
+.drum-pad-active::before {
+  opacity: 1;
+}
+
+.drum-pad:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.5), 0 0 20px rgba(255, 0, 204, 0.5);
+}
+
+.drum-pad-active {
+  transform: scale(0.98);
+  box-shadow: none;
+}
+
+.drum-pad audio {
+  display: none;
+}
+
+/* Interface styling */
+#container-interface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#display {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #00ffcc;
+  padding: 20px 40px;
+  border-radius: 8px;
+  font-size: 22px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+  margin-bottom: 20px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  #drum-machine {
+    max-width: 350px;
+  }
+
+  .drum-pad {
+    padding: 15px;
+    font-size: 20px;
+  }
+
+  #display {
+    font-size: 18px;
+    padding: 15px 30px;
+  }
+}
